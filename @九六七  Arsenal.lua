@@ -1,4 +1,4 @@
------ @九六七 / Arsenal
+----- @九六七 / Arsenal Hitbox Extender
 local GetPlayerService = function()
 	for _, class in pairs(game:GetChildren()) do
 		if class.ClassName == "Players" then
