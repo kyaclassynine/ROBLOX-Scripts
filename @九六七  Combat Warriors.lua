@@ -99,7 +99,7 @@ function HitboxUpdate(Weapon, Size)
 
 		 for _, Hitbox in pairs(Hitboxes) do
 			if table.find(HitboxNames, Hitbox.Name) then
-				local HitboxPart = Hitbox:IsA("Part")
+				local HitboxPart = Hitbox
 
 				for _, DmgPoint in pairs(HitboxPart:GetDescendants()) do
 					if DmgPoint.ClassName == "Attachment" then
@@ -115,7 +115,6 @@ function HitboxUpdate(Weapon, Size)
 							and DmgPoint.Position.Z + getfenv().HitboxSize.Z/2 or DmgPoint.Position.Z - getfenv().HitboxSize.Z/2)
 						or 0
 
-						TweenService:Create(HitboxPart, TweenInfo.new(1), {Size = getfenv().HitboxSize}):Play()
 						TweenService:Create(DmgPoint, TweenInfo.new(1), {Position = Vector3.new(
 							XPos,
 							YPos,
@@ -134,7 +133,7 @@ function PlayerAdded(Player)
 			return
 		end
 
-		if (Character:FindFirstChild(getfenv().WeaponEquipped) and getfenv().HitboxEnhanced) then
+		if getfenv().HitboxEnhanced then
 			local Weapon = Character:FindFirstChild(tostring(getfenv().WeaponEquipped))
 			HitboxUpdate(Weapon, getfenv().HitboxSize)
 		end
