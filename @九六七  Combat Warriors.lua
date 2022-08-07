@@ -133,7 +133,7 @@ function PlayerAdded(Player)
 			return
 		end
 
-		if getfenv().HitboxEnhanced then
+		if (getfenv().HitboxEnhanced and Character:FindFirstChild(getfenv().WeaponEquipped)) then
 			local Weapon = Character:FindFirstChild(tostring(getfenv().WeaponEquipped))
 			HitboxUpdate(Weapon, getfenv().HitboxSize)
 		end
